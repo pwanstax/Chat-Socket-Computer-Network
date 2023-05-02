@@ -48,7 +48,7 @@ const Chats = ({userId, setChatId, setChatWith, fetchChatList}) => {
     return;
   }, []);
 
-  const addThenShowDM = async (id1, id2) => {
+  const addThenShowDM = async (id1, id2, username) => {
     const data = {
       allowedUsers: [id1, id2],
       name: `${id1} - ${id2}`,
@@ -64,7 +64,7 @@ const Chats = ({userId, setChatId, setChatWith, fetchChatList}) => {
         fetchChatList();
       }
       setChatId(chatID);
-      setChatWith(name);
+      setChatWith(username);
     } catch (error) {
       console.error(error);
     }
@@ -110,7 +110,7 @@ const Chats = ({userId, setChatId, setChatWith, fetchChatList}) => {
                   {_id !== userId && (
                     <i
                       className="fa-solid fa-paper-plane"
-                      onClick={() => addThenShowDM(userId, _id)}
+                      onClick={() => addThenShowDM(userId, _id, username)}
                     ></i>
                   )}
                 </div>
