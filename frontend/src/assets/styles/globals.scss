@@ -1,0 +1,68 @@
+@import "./utilities.scss";
+
+@import "./pages/ChatPage.scss";
+@import "./pages/NoPage.scss";
+@import "./pages/ProfilePage.scss";
+@import "./pages/ResetPasswordPage.scss";
+@import "./pages/SigninPage.scss";
+
+@import "./components/Chat.scss";
+@import "./components/AddChatRoom.scss";
+@import "./components/ConfirmModal.scss";
+@import "./components/ContactFooter.scss";
+@import "./components/Footer.scss";
+@import "./components/MyProfile.scss";
+@import "./components/Navbar.scss";
+@import "./components/Profile.scss";
+@import "./components/SeoFooter.scss";
+@import "./components/SigninBox.scss";
+
+* {
+  font-size: 16px;
+  font-family: $primary-font;
+  font-weight: 400;
+}
+
+body {
+  display: block;
+  margin: 0;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+h1 {
+  font-size: var(--header1-fs);
+}
+h2 {
+  font-size: var(--header2-fs);
+}
+h3 {
+  font-size: var(--header3-fs);
+}
+p {
+  font-size: var(--paragraph1-fs);
+  margin: 0;
+  padding: 0;
+}
+i {
+  font-size: var(--icon-fs);
+}
+label {
+  font-size: var(--label-fs);
+}
+input {
+  padding: 11px 15px;
+}
+select {
+  padding: 11px 32px 11px 15px;
+  appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, gray 50%),
+    linear-gradient(135deg, gray 50%, transparent 50%);
+  background-position: calc(100% - 20px) calc(1em + 2px),
+    calc(100% - 15px) calc(1em + 2px), calc(100% - 2.5em) 0.5em;
+  background-size: 5px 5px, 5px 5px, 1px 1.5em;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

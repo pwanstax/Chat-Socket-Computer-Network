@@ -1,0 +1,203 @@
+.chat-container {
+  height: 100%;
+  box-sizing: border-box;
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr) minmax(0, 0.7fr);
+  grid-template-rows: minmax(0, 1fr);
+  .chatlist-container {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--contrast-color);
+    border-radius: 4px 0 0 4px;
+    border: solid 1px var(--arrow-color);
+    border-right: 0;
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      h2 {
+        font-weight: 600;
+        margin-left: 32px;
+      }
+      i {
+        margin-right: 32px;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+
+      i:hover {
+        scale: 2;
+        animation: spin 0.5s infinite linear;
+      }
+
+      @keyframes spin {
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    }
+    .chatlist {
+      border-top: solid 1px var(--arrow-color);
+      flex: auto;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      overflow-y: scroll;
+      .sub-header {
+        p {
+          margin: 16px 0 0 16px;
+          color: var(--p-color);
+        }
+      }
+      .chat {
+        border-bottom: solid 1px var(--arrow-color);
+        display: flex;
+        justify-content: space-between;
+        gap: 4px;
+        // height: 64px;
+        padding: 16px;
+        h3 {
+          margin: 0;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+        p {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          color: var(--p-color);
+        }
+        &.selected {
+          background-color: var(--secondary-background);
+        }
+        &:hover {
+          p {
+            font-weight: 600;
+          }
+        }
+      }
+      .chat-dm {
+        display: flex;
+        padding: 16px;
+        padding-left: 32px;
+        justify-content: space-between;
+        align-items: center;
+        h3 {
+          margin: 0;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+        &:hover {
+          background-color: var(--secondary-background);
+          i {
+            opacity: 100;
+          }
+        }
+        i {
+          opacity: 0;
+          margin-right: 16px;
+          transition: transform 0.3s;
+          &:hover {
+            transform: scale(1.2);
+            cursor: pointer;
+          }
+        }
+      }
+      .no-chat {
+        display: flex;
+        margin-top: 16px;
+        margin-left: 32px;
+        color: var(--p-color);
+      }
+    }
+  }
+  .chatbox-container {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--contrast-color);
+    border-radius: 0 4px 4px 0;
+    border: solid 1px var(--arrow-color);
+    .header {
+      border-bottom: solid 1px var(--arrow-color);
+      padding: 0 32px;
+      h2 {
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+    .message-container {
+      flex: auto;
+      display: flex;
+      flex-direction: column-reverse;
+      overflow: auto;
+      padding: 0 16px;
+      .system {
+        display: flex;
+        justify-content: center;
+        color: var(--p-color);
+        margin: 16px 0;
+      }
+      .message {
+        display: flex;
+        flex-direction: column;
+        &.left {
+          align-items: flex-start;
+        }
+        &.right {
+          align-items: flex-end;
+        }
+        .username {
+          margin-top: 16px;
+        }
+        .text-time {
+          display: flex;
+          align-items: end;
+          gap: 8px;
+          width: 100%;
+          &.right {
+            flex-direction: row-reverse;
+          }
+          .text {
+            max-width: 40%;
+            margin-top: 8px;
+            word-break: break-all;
+            background-color: var(--secondary-background);
+            border-radius: 32px;
+            padding: 12px 16px;
+          }
+          .time {
+            margin-bottom: 12px;
+            color: var(--p-color);
+            font-size: 12px;
+            white-space: nowrap;
+          }
+        }
+      }
+    }
+    form {
+      display: flex;
+      border: solid 1px var(--arrow-color);
+      border-radius: 32px;
+      margin: 20px;
+      padding: 12px 24px;
+      input {
+        all: unset;
+        width: 100%;
+        &::placeholder {
+          color: var(--p-color);
+        }
+      }
+      button {
+        all: unset;
+        margin-left: 16px;
+        &:hover {
+          color: var(--secondary-color);
+          font-weight: 500;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

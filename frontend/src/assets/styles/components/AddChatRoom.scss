@@ -1,0 +1,14 @@
+.addComponent {
+  border: 1px solid transparent;
+  padding: 4px;
+  background-color: rgba(128, 128, 128, 0.234);
+  border-radius: 8px;
+  &:hover {
+    background-color: rgba(139, 0, 0, 0.661);
+    color: white;
+    cursor: pointer;
+  }
+}
+.no-chosen-user {
+  color: grey;
+}

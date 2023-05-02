@@ -1,0 +1,4 @@
+{
+  "JWT_SECRET": "CHITCHAT",
+  "BACKEND_URL": "https://computernetwork9.monkeydcar.website"
+}
