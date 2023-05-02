@@ -67,8 +67,8 @@ const configureChatSocket = (server) => {
       );
 
       if (
-        socket.decoded_token &&
-        socket.decoded_token.username === message.user &&
+        // socket.decoded_token &&
+        // socket.decoded_token.username === message.user &&
         allowed
       ) {
         console.log(`Message received in server: ${message.text}`, message);

@@ -52,6 +52,9 @@ const jwtSocketMiddleware = (socket, next) => {
       socket.decoded_token = decoded;
       next();
     });
+    // socket.decoded_token = decoded;
+    // next();
+    // next();
   } catch (err) {
     next(new Error("Authentication error: " + err.message));
   }
