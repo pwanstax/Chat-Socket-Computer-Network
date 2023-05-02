@@ -55,6 +55,11 @@ export const joinChatRoom = async (req, res, next) => {
     if (existChat == null) {
       return res.status(404).json({message: "Not found"});
     }
+    if (existChat.type === "Direct") {
+      const peer = existChat.allowedUsers.find((id) => !id.equals(userID));
+      let peerUsername = await User.findById(peer, {username: 1});
+      existChat.name = peerUsername.username;
+    }
     const joinedChat = await Chat.findOne({
       _id: chatID,
       allowedUsers: {$in: [userID]},
