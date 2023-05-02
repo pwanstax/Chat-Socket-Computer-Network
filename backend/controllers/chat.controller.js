@@ -18,11 +18,7 @@ export const createChat = async (req, res, next) => {
       }
     }
     let chat = new Chat();
-    if (chat.type === "Direct") {
-      const peer = chat.allowedUsers.find((id) => !id.equals(userID));
-      let peerUsername = await User.findById(peer, {username: 1});
-      chat.name = peerUsername.username;
-    }
+
     if (name) chat.name = name;
     else chat.name = "";
     if (allowedUsers) chat.allowedUsers = allowedUsers;
@@ -55,21 +51,12 @@ export const joinChatRoom = async (req, res, next) => {
     if (existChat == null) {
       return res.status(404).json({message: "Not found"});
     }
-    if (existChat.type === "Direct") {
-      const peer = existChat.allowedUsers.find((id) => !id.equals(userID));
-      let peerUsername = await User.findById(peer, {username: 1});
-      existChat.name = peerUsername.username;
-    }
+
     const joinedChat = await Chat.findOne({
       _id: chatID,
       allowedUsers: {$in: [userID]},
     });
     if (joinedChat != null) {
-      if (joinedChat.type === "Direct") {
-        const peer = joinedChat.allowedUsers.find((id) => !id.equals(userID));
-        let peerUsername = await User.findById(peer, {username: 1});
-        joinedChat.name = peerUsername.username;
-      }
       return res
         .status(200)
         .json({isJoined: true, chatID: chatID, name: joinedChat.name});

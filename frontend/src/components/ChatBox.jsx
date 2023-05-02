@@ -18,6 +18,9 @@ const ChatBox = ({chatId, user, userId, chatWith}) => {
       withCredentials: true,
     });
     if (!!chatId) {
+      console.log("====================================");
+      console.log("in");
+      console.log("====================================");
       setSocket(newSocket);
       newSocket.on("connect", () => {
         console.log(`Connected to server with socket ID: ${newSocket.id}`);

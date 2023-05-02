@@ -21,7 +21,9 @@ const configureChatSocket = (server) => {
   io.use((socket, next) => {
     socket.userId = socket.handshake.query.userId;
     // authenticateUser.socket(socket, next);
+    next();
   });
+
   io.on("connection", (socket) => {
     console.log(`User connected: ${socket.id}`);
 
@@ -33,7 +35,7 @@ const configureChatSocket = (server) => {
         socket.emit("error", "Invalid input data");
         return;
       }
-      const userId = socket.decoded_token && socket.decoded_token.id;
+      // const userId = socket.decoded_token && socket.decoded_token.id;
       // if (userId && user === socket.decoded_token.username) {
       const allowed = await isUserAllowedInRoom(socket.userId, chatId);
       if (allowed) {
