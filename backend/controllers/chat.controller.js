@@ -18,6 +18,11 @@ export const createChat = async (req, res, next) => {
       }
     }
     let chat = new Chat();
+    if (chat.type === "Direct") {
+      const peer = chat.allowedUsers.find((id) => !id.equals(userID));
+      let peerUsername = await User.findById(peer, {username: 1});
+      chat.name = peerUsername.username;
+    }
     if (name) chat.name = name;
     else chat.name = "";
     if (allowedUsers) chat.allowedUsers = allowedUsers;
@@ -37,11 +42,6 @@ export const createChat = async (req, res, next) => {
 export const getAllChatRooms = async (req, res, next) => {
   try {
     let chats = await Chat.find({type: "Group"});
-    // if (user == null) {
-    //   res.status(404).json({message: "Cannot find user"});
-    // } else {
-    //   res.send(await user.getUserInfoJSON());
-    // }
     res.send(chats);
   } catch (error) {
     res.status(500).json({message: error.message});
