@@ -1,4 +1,4 @@
 {
   "JWT_SECRET": "CHITCHAT",
-  "BACKEND_URL": "http://localhost:8080"
+  "BACKEND_URL": "https://computernetwork9.monkeydcar.website"
 }
